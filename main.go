@@ -93,6 +93,10 @@ func main() {
 		chatId := update.Message.Chat.ID
 		photos := *update.Message.Photo
 
+		if len(photos) == 0 {
+			continue
+		}
+
 		log.Printf("Message received from chat %d", chatId)
 
 		fileConfig := tgbotapi.FileConfig{FileID: photos[0].FileID}
